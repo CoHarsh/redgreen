@@ -1,11 +1,14 @@
 import * as React from "react";
 import MailIcon from "@mui/icons-material/Mail";
+import logo from "../Assets/reggreenlogo-2.png"
 const Footer = () => {
   return (
     <footer className="card-shadow ">
       <div className="flex-center-center-row footer" style={{justifyContent:"space-evenly"}}>
         <span className=" text-white-bold flex-center-center-row ">
-          <p className=" text-white-bold card-font-subtitle" id="yooo">RedGreen</p>
+          <p className=" text-white-bold card-font-subtitle" id="yooo">
+            <img className="footerLogosize" src={logo} alt="redgreen"/>
+          </p>
           <span style={{ width: "20px" }}></span>
           <p className="text-white-bold card-font-subtitle">
             © 2023 HARSH DEVS. All rights reserved. Built in India

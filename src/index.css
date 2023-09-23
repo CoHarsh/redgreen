@@ -290,6 +290,16 @@ p{
   color: #08203d;
 }
 
+.logoresize{
+  width: auto !important;
+  height: 3rem;
+  margin-right: 20rem !important;
+}
+.footerLogosize{
+  width: auto !important;
+  height: 3rem;
+}
+
 .link-styling:hover{
   text-decoration: underline;
 }

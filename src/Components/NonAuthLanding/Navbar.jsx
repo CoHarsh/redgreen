@@ -7,14 +7,12 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import Modal from '@mui/material/Modal';
 import UserLogin from "../UserLogin";
-
+import logo from "../../Assets/reggreenlogo-2.png"
 const pages = ["Product", "About us", "Create"];
 
 const style = {
@@ -24,8 +22,8 @@ const style = {
   transform: 'translate(-50%, -50%)',
   width: 400,
   bgcolor: 'white',
-  border: '2px solid #000',
   boxShadow: 24,
+  borderRadius:3,
   p: 4,
 };
 
@@ -56,7 +54,7 @@ function Navbar() {
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters className='customizeToolbar subtitle-font'>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
           {/* logo */}
           <Typography
             variant="h6"
@@ -72,8 +70,9 @@ function Navbar() {
               color: "inherit",
               textDecoration: "none",
             }}
+            className="logoresize"
           >
-            LOGO
+            <img src={logo} alt="Reggreen"/>
           </Typography>
 
           <Box
@@ -147,7 +146,7 @@ function Navbar() {
                 key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "black", display: "block" }}
-                style={{textTransform: 'none',fontSize: "20px", fontWeight: "500"}}
+                style={{textTransform: 'none',fontSize: "20px", fontWeight: "500",marginRight:"2rem"}}
               >
                 {page}
               </Button>
