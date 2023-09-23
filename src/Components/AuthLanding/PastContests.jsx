@@ -2,7 +2,7 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
 import Chip from '@mui/material/Chip';
-
+import { Link } from "react-router-dom";
 const columns = [
     {
       field: "contestname",
@@ -10,6 +10,17 @@ const columns = [
       width: 260,
       sortable:false,
       editable: false,
+      renderCell: (params) => {
+        let pathid=params.row.id
+        if (typeof params.row.id!== "string") {
+          pathid = params.row.id.toString();
+        }
+        return (
+          <Link to={`${pathid}`}>
+            {params.row.contestname}
+          </Link>
+        );
+        }
     },
     {
       field: "writesname",

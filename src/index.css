@@ -232,7 +232,7 @@ p{
 
 /* ///// Colllge personal site */
 
-#color-strip{
+.color-strip{
   background-color: #08203d;
   width: 100%;
   height: 7rem;
@@ -245,15 +245,22 @@ p{
   height: 100%;
 }
 
-#left-panel-college{
+.left-panel-college{
   width: 70%;
   position: relative;
   top: -5rem;
   z-index: 3 !important;
-
 }
 
-#right-panel-college{
+.strip-color-up{
+  width: 95%;
+  position: relative;
+  top: -5rem;
+  z-index: 3 !important;
+  left: 2.5%;
+}
+
+.right-panel-college{
   width: 30%;
   position: relative;
   top: -5rem;
@@ -277,3 +284,88 @@ p{
   white-space: normal !important; /* Allow text to wrap */
   overflow: visible !important; /* Allow content to overflow */
 }
+
+.link-styling{
+  text-decoration: none;
+  color: #08203d;
+}
+
+.link-styling:hover{
+  text-decoration: underline;
+}
+
+
+/* code editor css  */
+.editor-navbar{
+  box-sizing: border-box;
+  width: 90%;
+  height: auto;
+  border: 0.1rem solid #08203d46;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: row;
+  border-radius: 5px;
+}
+
+.monaco-editor {
+  padding-top: 5px;
+  height: 100%;
+ }
+ .iconhover :hover{
+    cursor: pointer;
+ }
+
+ .question-text{
+  width: 90%;
+  height: 100%;
+  margin:0 0 5rem 0 ;
+  
+ }
+
+ .question-header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+ }
+.question-body{
+    margin:2rem 0 0 0 ;
+    
+}
+
+.questionptag{
+  font-size: 17px;
+  font-family: 'poppins';
+  font-weight: 500;
+  letter-spacing: 1.2;
+}
+ 
+ .mergintop{
+  margin-top: 20px;
+ }
+ .marginBottom{
+  margin-bottom: 20px;
+ }
+
+ .action-stack{
+  display: flex;
+  align-items: flex-end;
+  padding-right: 3rem;
+  padding-left: 3rem;
+  justify-content: space-between;
+  width: 90%;
+ }
+
+ .customtescase{
+  width: 40%;
+  height: 10rem;
+  margin-left: 3rem;
+  text-align: left;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  text-wrap:wrap;
+ }
+
+ 

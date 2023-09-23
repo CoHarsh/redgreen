@@ -12,9 +12,22 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import Modal from '@mui/material/Modal';
+import UserLogin from "../UserLogin";
 
 const pages = ["Product", "About us", "Create"];
-// const settings = ["Profile", "Account", "Dashboard", "Logout"];
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'white',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -26,7 +39,12 @@ function Navbar() {
     setAnchorElNav(null);
   };
 
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
+    
     <AppBar
       position="static"
       sx={{
@@ -97,7 +115,7 @@ function Navbar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center" className="subtitle-font">{page}</Typography>
+                  <Typography textAlign="center" className="subtitle-font" style={{textTransform: 'none'}}>{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -129,6 +147,7 @@ function Navbar() {
                 key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "black", display: "block" }}
+                style={{textTransform: 'none',fontSize: "20px", fontWeight: "500"}}
               >
                 {page}
               </Button>
@@ -137,7 +156,18 @@ function Navbar() {
 
           <Box sx={{ flexGrow: 0 }}>
             {/* //signin button */}
-            <Button variant="outlined">Login</Button>
+            <Button variant="outlined" style={{textTransform: 'none',fontSize:"20px"}} onClick={()=>handleOpen()}>Login</Button>
+            {/* <LoginModal open={open} handleClose={handleClose} /> */}
+            <Modal 
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+            >
+              <Box sx={style}>
+                <UserLogin />
+              </Box>
+            </Modal>
             {/* <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />

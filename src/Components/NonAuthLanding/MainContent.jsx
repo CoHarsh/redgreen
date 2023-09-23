@@ -14,7 +14,7 @@ const MainContent = () => {
             <span className="text-blue-600">Contests</span>
           </span>
           <span>
-            <span className="font-primary">for a College</span>{" "}
+            <span className="font-primary">for College</span>{" "}
             <span className="text-blue-600">Geek</span>
           </span>
         </p>

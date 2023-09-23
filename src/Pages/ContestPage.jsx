@@ -1,8 +1,9 @@
-import * as React from "react"
-import ContestListing from "../Components/AuthLanding/ContestListing"
-import ProfileSection from "../Components/AuthLanding/ProfileSection"
+import * as React from "react";
+import ContestQuestions from "../Components/Contests/ContestQuestions";
+import ContestTimePanel from "../Components/Contests/ContestTimePanel";
 import Footer from "../Components/Footer";
-const CollegeMainPage = () => {
+
+const ContestPage = () => {
     const [client,setClient] = React.useState('desktop');
     React.useEffect(() => {
         if(typeof window!== 'undefined'){
@@ -18,10 +19,10 @@ const CollegeMainPage = () => {
                     <div className="color-strip"></div>
                     <div className="college-page">
                         <span className="left-panel-college">
-                            <ContestListing/>
+                            <ContestQuestions/>
                         </span>
                         <span className="right-panel-college">
-                            <ProfileSection/>
+                            <ContestTimePanel/>
                         </span>
                     </div>
                     <div className="margin-top-2rem">
@@ -30,7 +31,7 @@ const CollegeMainPage = () => {
                 </>
             }
         </div>
-    )
-}
+    );
+};
 
-export default CollegeMainPage
+export default ContestPage;
