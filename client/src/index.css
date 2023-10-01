@@ -156,6 +156,11 @@ p{
   border-radius: 10px !important;
 }
 
+.backbtn{
+  position: absolute !important;
+  left: 8rem;
+}
+
 .card-font-title{
   margin-top: 0.7rem !important;
   font-size: 1.125rem !important;

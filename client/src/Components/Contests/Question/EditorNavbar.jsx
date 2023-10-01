@@ -51,7 +51,9 @@ const EditorNavbar = (props) => {
                 </MenuItem>
                 <MenuItem value="java">Java</MenuItem>
                 <MenuItem value="py">Python</MenuItem>
-                <MenuItem value="Javascript">Javascript</MenuItem>
+                <MenuItem value="js">Javascript</MenuItem>
+                <MenuItem value='c'>C</MenuItem>
+                <MenuItem value='go'>Go</MenuItem>
                 </Select>
                 
             </FormControl>

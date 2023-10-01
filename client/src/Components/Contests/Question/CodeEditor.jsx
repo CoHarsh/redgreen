@@ -39,6 +39,7 @@ function generateTestCases(numTestCases) {
 }
 
 const CodeEditor = () => {
+
   const defaultCode =
     '#include<bits/stdc++.h> \n using namespace std;\n\n int main(){\n\tcout<<"Write your code here:"<<endl;\n\treturn 0;\n}';
 
@@ -51,8 +52,9 @@ const CodeEditor = () => {
   const [modalopen, setModalOpen] = React.useState(false);
   const [runoutput, setRunOutput] = React.useState("");
   const [outputerror, setOutputError] = React.useState(false);
-  const [loaderOn,setLoaderOn] = React.useState(false);
-  const [timestamp,setTimeStamp] = React.useState(false);
+  const [loaderOn, setLoaderOn] = React.useState(false);
+  const [timestamp, setTimeStamp] = React.useState(false);
+  
   const handlecodechange = (value, event) => {
     setCodevalue(value);
   };
@@ -72,6 +74,9 @@ const CodeEditor = () => {
     setRunOutput("");
     setOutputError("");
     setTimeStamp(false);
+    if(customTestCase === ""){
+      setCustomTestCase(JSON.stringify(examples[0].input));
+    }
     fetch("http://localhost:8001/api/compile", {
       method: "POST",
       headers: {
@@ -90,10 +95,9 @@ const CodeEditor = () => {
         if (res.data.error === "") {
           setRunOutput(res.data.output);
           console.log(res.data);
-          // console.log(JSON.parse(res.data.output));
-          // setRunOutput(res.data.output);
           setTimeStamp(res.data.runtime);
           setOutputError(false);
+
         } else if (res.data.error !== "") {
           setRunOutput(res.data.error);
           setOutputError(true);
@@ -104,6 +108,20 @@ const CodeEditor = () => {
       })
       .catch((err) => console.log(err));
   };
+
+  // const handleSampleExampleTC = () => {
+
+  // }
+
+  const keydownHandler = (e) => {
+    if(e.key === '\'' && e.ctrlKey) HandleRunTheCode()
+  };
+  React.useEffect(() => {
+    document.addEventListener('keydown', keydownHandler);
+    return () => {
+      document.removeEventListener('keydown', keydownHandler);
+    }
+  }, []);
 
   const numTestCases = 26;
   const testCases = generateTestCases(numTestCases);
@@ -142,7 +160,16 @@ const CodeEditor = () => {
   React.useEffect(() => {
     console.table([fontSize, language]);
   }, [fontSize, language]);
-
+  const examples = [
+    {
+        "input":"harshprajapati",
+        "output":"harshprajapati"
+    },
+    {
+        "input":"harshprajapati1",
+        "output":"harshprajapati1"
+    }
+];
   const handleClose = () => setModalOpen(false);
 
   return (
@@ -156,7 +183,7 @@ const CodeEditor = () => {
             justifyContent: "center",
           }}
         >
-          <QuestionTextRender />
+          <QuestionTextRender examples={examples}/>
         </div>
 
         {/* code editor */}
@@ -191,7 +218,7 @@ const CodeEditor = () => {
               label="Custom testcases"
               onClick={OpenCustomTestCase}
             />
-            <Button
+            {/* <Button
               variant="contained"
               color="success"
               style={{
@@ -201,9 +228,10 @@ const CodeEditor = () => {
                 minHeight: "30px",
                 textTransform: "none",
               }}
+              onClick={handleSampleExampleTC}
             >
               Use example testcases
-            </Button>
+            </Button> */}
           </Stack>
           <Stack spacing={2} direction="row">
             <Button
@@ -265,21 +293,30 @@ const CodeEditor = () => {
                 onChange={handleCustomTestcaseChange}
                 id="customtestcaseinput"
               ></textarea>
-              {runoutput !== "" ? 
-              <div className="output-container">
-                <h2
-                  className="subtitle-font-12 font-bold"
-                  style={{ marginLeft: "3.5rem" }}
-                >
-                  Output status :{" "}
-                  {outputerror == true ? (
-                    <span style={{ color: "red" }}>Compilation Error</span>
-                  ) : (
-                    <span style={{ color: "green" }}>Success</span>
-                  )}{" "}
-                </h2>
-                <OutputBox input={customTestCase} output={runoutput} runtime={timestamp} />
-              </div> : loaderOn ? <div className="flex-center-center margin-top-2rem"><CircularProgress/></div> : null}
+              {runoutput !== "" ? (
+                <div className="output-container">
+                  <h2
+                    className="subtitle-font-12 font-bold"
+                    style={{ marginLeft: "3.5rem" }}
+                  >
+                    Output status :{" "}
+                    {outputerror == true ? (
+                      <span style={{ color: "red" }}>Compilation Error</span>
+                    ) : (
+                      <span style={{ color: "green" }}>Compilation done</span>
+                    )}{" "}
+                  </h2>
+                  <OutputBox
+                    input={customTestCase}
+                    output={runoutput}
+                    runtime={timestamp}
+                  />
+                </div>
+              ) : loaderOn ? (
+                <div className="flex-center-center margin-top-2rem">
+                  <CircularProgress />
+                </div>
+              ) : null}
             </>
           ) : (
             <></>

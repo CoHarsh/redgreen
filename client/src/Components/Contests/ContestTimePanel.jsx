@@ -5,10 +5,12 @@ const ContestTimePanel = () => {
     const Completionist = () => <span>Contest ended!</span>;
     return (
         <div className="listing-container card-shadow flex-center-center">
-            <h1>Contest ends in : </h1>
+            <h4 className="font-family-apply">Contest ends in : </h4>
+            <h2 className="font-family-apply" style={{margin:"0"}}>
             <Countdown date={Date.now() + 5000}>
-                <Completionist/>
+                <Completionist />
             </Countdown>
+            </h2>
         </div>
     );
 };

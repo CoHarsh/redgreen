@@ -2,25 +2,31 @@ import * as React from "react";
 import ContestTimePanel from "../ContestTimePanel"
 import Examples from "./Examples";
 import * as Latex from "react-latex"
-const QuestionTextRender = () => {
-    const exampes = [
-        {
-            "input":"harshprajapati",
-            "output":"harshprajapati"
-        },
-        {
-            "input":"harshprajapati1",
-            "output":"harshprajapati1"
-        }
-    ];
-    const constrains = " n \<\= 10^{5}"
+import { Button } from "@mui/material";
+import { useNavigate } from 'react-router-dom';
+const QuestionTextRender = (props) => {
+  const navigate = useNavigate();
+  const constrains = " n \<\= 10^{5}"
+  const handleBackgoing = () => {
+    navigate(-1)
+  }
   return (
     <div className="question-text">
       <div className="question-header">
+      <div className="flex-center-center">
+        <Button className="backbtn" variant="contained"
+              style={{
+                maxWidth: "auto",
+                maxHeight: "40px",
+                minWidth: "30px",
+                minHeight: "30px",
+                textTransform: "none",
+              }} onClick={handleBackgoing}>
+                Back</Button>
+        </div>
         <h1 className="question-name-header font-family-apply">Question-1</h1>
         {/* Question submission description */}
-        <div className="flex-center-center">
-        </div>
+        
         <div className="timepanel-question">
           <ContestTimePanel />
         </div>
@@ -48,21 +54,13 @@ const QuestionTextRender = () => {
       {/* constrains */}
       <div>
         <h3 className="font-bold">Constrains</h3>
-        {/* <ul>
-          <li>
-            <p className="questionptag">The string length should be in the range of 1 to 100.</p>
-          </li>
-          <li>
-            <p className="questionptag">The string should consist of lowercase characters.</p>
-          </li>
-        </ul> */}
         <p className="constrains-class">
           <Latex displayMode={true} >$1 \leq n \leq 10^5$ $-10^9 \leq a_i \leq 10^9$ for all $1 \leq i \leq n$</Latex>   </p>  
         </div>
       {/* examples testcases */}
       <div>
         <h3 className="font-bold">Examples : </h3>
-        <Examples examples={exampes}/>
+        <Examples examples={props.examples}/>
       </div>
     </div>
   );
