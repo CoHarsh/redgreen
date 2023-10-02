@@ -126,6 +126,15 @@ p{
   width: 100%;
 }
 
+.blue-shad{
+  text-align: "left";
+  background-color: rgba(0, 0, 0, 0.05);
+  width: "98%";
+  border-radius: "5px";
+  padding: "10px !important";
+  font-family:"monospace !important";
+}
+
 .text-center-align{
   text-align: center;
 }

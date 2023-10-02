@@ -24,7 +24,7 @@ const QuestionTextRender = (props) => {
               }} onClick={handleBackgoing}>
                 Back</Button>
         </div>
-        <h1 className="question-name-header font-family-apply">Question-1</h1>
+        <h1 className="question-name-header font-family-apply">{props.questionname}</h1>
         {/* Question submission description */}
         
         <div className="timepanel-question">
@@ -33,34 +33,33 @@ const QuestionTextRender = (props) => {
       </div>
       {/* Question explaination */}
       <div className="question-body">
-        <p className="questionptag">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas
-          laudantium voluptatibus maiores sequi reprehenderit corrupti laborum
-          at sint delectus dolores expedita recusandae minus praesentium
-          exercitationem, iusto culpa, dolore voluptatem ipsum explicabo
-          pariatur magni. Molestias blanditiis et laboriosam, eum eveniet cum!
+        <p className="questionptag" style={{ whiteSpace: "pre-line" }}>
+          {props.questiontext}
         </p>
       </div>
       {/* Input */}
       <div>
         <h3>Input</h3>
-        <p className="questionptag">A lowercase string of prescribed length in constrains.</p>
+        <div className="">
+        <p className="questionptag blue-shad" style={{ whiteSpace: "pre-line" }}>{props.questioninputdetails}</p>
+        </div>
       </div>
       {/* output */}
       <div>
         <h3 className="font-bold">Output</h3>
-        <p className="questionptag">Print the longest palindromic substring.</p>
+        <p className="questionptag blue-shad" style={{ whiteSpace: "pre-line" }}>{props.questionoutputdetails}</p>
       </div>
       {/* constrains */}
       <div>
-        <h3 className="font-bold">Constrains</h3>
-        <p className="constrains-class">
-          <Latex displayMode={true} >$1 \leq n \leq 10^5$ $-10^9 \leq a_i \leq 10^9$ for all $1 \leq i \leq n$</Latex>   </p>  
+        <h3 className="font-bold" >Constrains</h3>
+        <p className="constrains-class blue-shad" style={{ whiteSpace: "pre-line" }}>
+          <Latex displayMode={true}>What is $(3\times 4) \div (5-3)$</Latex>   </p>  
         </div>
       {/* examples testcases */}
       <div>
         <h3 className="font-bold">Examples : </h3>
-        <Examples examples={props.examples}/>
+        {props.examples ? 
+        <Examples examples={props.examples}/> : <></>}
       </div>
     </div>
   );

@@ -39,7 +39,6 @@ function generateTestCases(numTestCases) {
 }
 
 const CodeEditor = () => {
-
   const defaultCode =
     '#include<bits/stdc++.h> \n using namespace std;\n\n int main(){\n\tcout<<"Write your code here:"<<endl;\n\treturn 0;\n}';
 
@@ -54,7 +53,8 @@ const CodeEditor = () => {
   const [outputerror, setOutputError] = React.useState(false);
   const [loaderOn, setLoaderOn] = React.useState(false);
   const [timestamp, setTimeStamp] = React.useState(false);
-  
+  const [questionText, setQuestionText] = React.useState({});
+
   const handlecodechange = (value, event) => {
     setCodevalue(value);
   };
@@ -68,13 +68,26 @@ const CodeEditor = () => {
     setCustomTestCase(event.target.value);
   };
 
+  const getQuestion = async () => {
+    fetch("http://localhost:8001/api/getquestion/651abb2ce6babb79b6f6d831")
+      .then((res) => res.json())
+      .then((res) => {
+        const questiondata = JSON.parse(res.data);
+        console.log(questiondata);
+        setQuestionText(questiondata);
+      })
+      .catch((err) => {
+        throw err;
+      });
+  };
+
   const HandleRunTheCode = async (event) => {
     setCustomTestcaseBox(true);
     setLoaderOn(true);
     setRunOutput("");
     setOutputError("");
     setTimeStamp(false);
-    if(customTestCase === ""){
+    if (customTestCase === "") {
       setCustomTestCase(JSON.stringify(examples[0].input));
     }
     fetch("http://localhost:8001/api/compile", {
@@ -97,7 +110,6 @@ const CodeEditor = () => {
           console.log(res.data);
           setTimeStamp(res.data.runtime);
           setOutputError(false);
-
         } else if (res.data.error !== "") {
           setRunOutput(res.data.error);
           setOutputError(true);
@@ -114,13 +126,13 @@ const CodeEditor = () => {
   // }
 
   const keydownHandler = (e) => {
-    if(e.key === '\'' && e.ctrlKey) HandleRunTheCode()
+    if (e.key === "'" && e.ctrlKey) HandleRunTheCode();
   };
   React.useEffect(() => {
-    document.addEventListener('keydown', keydownHandler);
+    document.addEventListener("keydown", keydownHandler);
     return () => {
-      document.removeEventListener('keydown', keydownHandler);
-    }
+      document.removeEventListener("keydown", keydownHandler);
+    };
   }, []);
 
   const numTestCases = 26;
@@ -162,14 +174,19 @@ const CodeEditor = () => {
   }, [fontSize, language]);
   const examples = [
     {
-        "input":"harshprajapati",
-        "output":"harshprajapati"
+      input: "harshprajapati",
+      output: "harshprajapati",
     },
     {
-        "input":"harshprajapati1",
-        "output":"harshprajapati1"
-    }
-];
+      input: "harshprajapati1",
+      output: "harshprajapati1",
+    },
+  ];
+
+  React.useEffect(() => {
+    getQuestion();
+  }, []);
+
   const handleClose = () => setModalOpen(false);
 
   return (
@@ -183,7 +200,14 @@ const CodeEditor = () => {
             justifyContent: "center",
           }}
         >
-          <QuestionTextRender examples={examples}/>
+          <QuestionTextRender
+            questionname={questionText.questionname}
+            questiontext={questionText.questiontext}
+            questioninputdetails={questionText.questioninputdetails}
+            questionoutputdetails={questionText.questionoutputdetails}
+            questionconstrains={questionText.questionconstrains}
+            examples={questionText.questionexamples}
+          />
         </div>
 
         {/* code editor */}
