@@ -13,7 +13,9 @@ import {
 import ContestPage from './Pages/ContestPage';
 import * as React from 'react';
 import NotFoundPage from './Pages/NotFoundPage';
-
+import RegisterCollege from './Pages/Admin/RegisterCollege';
+import CreateContest from './Components/Admin/CreateContest';
+import DraftContest from './Components/Admin/DraftContest';
 // 
 
 function App() {
@@ -40,7 +42,9 @@ function App() {
         <Route exact path={`${collegeName}`} element={<CollegeMainPage/>} />
         <Route path={`${collegeName}/:contest`} element={ <ContestPage/> } />
         <Route path={`${collegeName}/:contestid/:questionId`} element={ <QuestionPage/> } />
-        
+        <Route path='/register' element={<RegisterCollege/>} />
+        <Route path='/create' element={<CreateContest/>} />
+        <Route path='/draft' element={<DraftContest/>} />
        <Route exact strict element={<NotFoundPage/>}/>
       </Routes>
     </BrowserRouter>

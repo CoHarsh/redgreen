@@ -1,0 +1,35 @@
+For a college coding contest platform host registration form, you may want to consider collecting additional information to ensure that the host institution is properly registered and equipped to organize coding contests. Here are some additional fields you might include in your registration form:
+
+1. **College Name (Full Name):** (Required) As you've already included.
+
+2. **Acronym or Abbreviation:** (Not required) As you've already included.
+
+3. **Email ID:** (Required) As you've already included. You might want to verify the email address for communication purposes.
+
+4. **Password:** (Required) As you've already included. For secure access to the hosting platform.
+
+5. **Confirm Password:** (Required) To ensure the accuracy of the password provided.
+
+6. **College Address:** (Required) Including fields for street address, city, state/province, postal/ZIP code, and country.
+
+7. **Contact Person's Name:** (Required) The name of the person responsible for contest-related communications.
+
+8. **Contact Person's Phone Number:** (Required) A phone number for the contact person.
+
+9. **Faculty Advisor's Name:** (Not required) If applicable, you can ask for the name of the faculty advisor who will oversee the contest.
+
+10. **Faculty Advisor's Email:** (Not required) If applicable, the email address of the faculty advisor.
+
+11. **Number of Students Expected to Participate:** (Not required) An estimate of the number of students expected to participate in the contests.
+
+12. **Hosting Platform Preferences:** (Not required) Ask if they have any preferences for the contest hosting platform or any special requirements.
+
+13. **Payment Information:** (Not required) If your platform charges for hosting contests, collect payment information.
+
+14. **Agreement to Terms and Conditions:** (Required) Include a checkbox or a link to your platform's terms and conditions, and require the host to agree to them.
+
+15. **Upload College Logo:** (Not required but encouraged) Allow the college to upload its logo for branding purposes.
+
+16. **Additional Comments or Requests:** (Not required) A text field for any specific requests or additional information the college wants to provide.
+
+Remember to validate and handle the form data on the server-side to ensure data integrity and security. Additionally, consider providing clear instructions and tooltips for each field to make the registration process as smooth as possible for your potential hosts.

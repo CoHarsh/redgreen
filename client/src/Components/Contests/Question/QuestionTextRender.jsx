@@ -53,7 +53,11 @@ const QuestionTextRender = (props) => {
       <div>
         <h3 className="font-bold" >Constrains</h3>
         <p className="constrains-class blue-shad" style={{ whiteSpace: "pre-line" }}>
-          <Latex displayMode={true}>What is $(3\times 4) \div (5-3)$</Latex>   </p>  
+          {
+            
+          <Latex displayMode={true}>What is $(3\times 4) \div (5-3)$</Latex>  
+          } 
+        </p>  
         </div>
       {/* examples testcases */}
       <div>

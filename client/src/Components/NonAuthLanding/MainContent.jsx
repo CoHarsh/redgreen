@@ -1,7 +1,8 @@
 import * as React from "react";
 import { Button } from "@mui/material";
-
+import { useNavigate } from "react-router-dom";
 const MainContent = () => {
+  const navigate = useNavigate();
   return (
     <div className="">
       <div id="title-text">
@@ -32,6 +33,7 @@ const MainContent = () => {
             variant="contained"
             style={{ textTransform: "none", padding: "0.8rem 2rem" }}
             className="button-font"
+            onClick={(e)=>navigate('/register')}
           >
             Start your jounrey
           </Button>

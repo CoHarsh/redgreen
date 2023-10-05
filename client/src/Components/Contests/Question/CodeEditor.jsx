@@ -174,12 +174,12 @@ const CodeEditor = () => {
   }, [fontSize, language]);
   const examples = [
     {
-      input: "harshprajapati",
-      output: "harshprajapati",
+      input: "2 7 11 15 \n 9",
+      output: "0 1",
     },
     {
-      input: "harshprajapati1",
-      output: "harshprajapati1",
+      input: "3 2 4 \n 6",
+      output: "1 2",
     },
   ];
 
@@ -316,6 +316,7 @@ const CodeEditor = () => {
                 className="customtescase"
                 onChange={handleCustomTestcaseChange}
                 id="customtestcaseinput"
+                style={{ whiteSpace: "pre-line" }}
               ></textarea>
               {runoutput !== "" ? (
                 <div className="output-container">
